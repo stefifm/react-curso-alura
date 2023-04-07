@@ -1,7 +1,7 @@
 import './CampoTexto.css'
 import PropTypes from 'prop-types'
 
-function CampoTexto({ title, placeholder }) {
+function CampoTexto({ title, placeholder, required }) {
   const placeholderUpdated = `${placeholder}...`
   return (
     <div className='campo-texto'>
@@ -13,6 +13,7 @@ function CampoTexto({ title, placeholder }) {
       <input
         type='text'
         placeholder={placeholderUpdated}
+        required={required}
       />
     </div>
   )
@@ -21,6 +22,7 @@ function CampoTexto({ title, placeholder }) {
 CampoTexto.propTypes = {
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 }
 
 export default CampoTexto

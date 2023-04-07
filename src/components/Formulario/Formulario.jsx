@@ -19,14 +19,17 @@ function Formulario() {
         <CampoTexto
           title='Nombre'
           placeholder='Ingresar Nombre'
+          required
         />
         <CampoTexto
           title='Puesto'
           placeholder='Ingresar Puesto'
+          required
         />
         <CampoTexto
           title='Foto'
           placeholder='Ingresar enlace de la Foto'
+          required
         />
 
         <ListaOpciones />
