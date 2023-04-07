@@ -1,12 +1,20 @@
+import Boton from '../Boton'
 import CampoTexto from '../CampoTexto'
 import ListaOpciones from '../ListaOpciones'
 
 import './Formulario.css'
 
 function Formulario() {
+  const manejarEnvio = (e) => {
+    e.preventDefault()
+    console.log('envio')
+  }
+
   return (
     <section className='formulario'>
-      <form action=''>
+      <form
+        action=''
+        onSubmit={manejarEnvio}>
         <h2>Rellena el formulario para crear el colaborador.</h2>
         <CampoTexto
           title='Nombre'
@@ -22,6 +30,8 @@ function Formulario() {
         />
 
         <ListaOpciones />
+
+        <Boton>Crear</Boton>
       </form>
     </section>
   )
