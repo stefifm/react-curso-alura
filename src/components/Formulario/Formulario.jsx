@@ -1,4 +1,6 @@
 import CampoTexto from '../CampoTexto'
+import ListaOpciones from '../ListaOpciones'
+
 import './Formulario.css'
 
 function Formulario() {
@@ -18,6 +20,8 @@ function Formulario() {
           title='Foto'
           placeholder='Ingresar enlace de la Foto'
         />
+
+        <ListaOpciones />
       </form>
     </section>
   )
