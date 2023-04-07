@@ -1,13 +1,14 @@
 import './CampoTexto.css'
+import PropTypes from 'prop-types'
 
-function CampoTexto(datosExternos) {
-  const placeholderUpdated = `${datosExternos.placeholder}...`
+function CampoTexto({ title, placeholder }) {
+  const placeholderUpdated = `${placeholder}...`
   return (
     <div className='campo-texto'>
       <label
         className='label'
         htmlFor=''>
-        {datosExternos.title}
+        {title}
       </label>
       <input
         type='text'
@@ -15,6 +16,11 @@ function CampoTexto(datosExternos) {
       />
     </div>
   )
+}
+
+CampoTexto.propTypes = {
+  title: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 }
 
 export default CampoTexto
