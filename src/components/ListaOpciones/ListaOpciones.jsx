@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types'
 import './ListaOpciones.css'
 
-function ListaOpciones() {
+function ListaOpciones({ value, setValue }) {
   const equipos = [
     'Programación',
     'FrontEnd',
@@ -10,6 +11,11 @@ function ListaOpciones() {
     'Móvil',
     'Innovación y Gestión',
   ]
+
+  const handleChange = (e) => {
+    setValue(e.target.value)
+  }
+
   return (
     <div className='lista-opciones'>
       <label
@@ -18,18 +24,30 @@ function ListaOpciones() {
         Equipo
       </label>
       <select
-        name=''
-        id=''>
+        value={value}
+        onChange={handleChange}>
+        <option
+          value=''
+          disabled
+          defaultValue=''
+          hidden>
+          Seleccionar equipo
+        </option>
         {equipos.map((equipo, index) => (
           <option
-            key={index}
-            value=''>
+            value={equipo}
+            key={index}>
             {equipo}
           </option>
         ))}
       </select>
     </div>
   )
+}
+
+ListaOpciones.propTypes = {
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
 }
 
 export default ListaOpciones
