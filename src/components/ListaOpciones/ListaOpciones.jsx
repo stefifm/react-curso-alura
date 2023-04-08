@@ -1,17 +1,7 @@
 import PropTypes from 'prop-types'
 import './ListaOpciones.css'
 
-function ListaOpciones({ value, setValue }) {
-  const equipos = [
-    'Programación',
-    'FrontEnd',
-    'Data Science',
-    'DevOps',
-    'UX y Diseño',
-    'Móvil',
-    'Innovación y Gestión',
-  ]
-
+function ListaOpciones({ value, setValue, equipos }) {
   const handleChange = (e) => {
     setValue(e.target.value)
   }
@@ -48,6 +38,7 @@ function ListaOpciones({ value, setValue }) {
 ListaOpciones.propTypes = {
   value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
+  equipos: PropTypes.array.isRequired,
 }
 
 export default ListaOpciones

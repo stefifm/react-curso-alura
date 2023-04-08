@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import './Equipo.css'
+import Colaborador from '../Colaborador'
 
 function Equipo({ equipo, colorPrimario, colorSecundario }) {
   const estilo = {
@@ -15,7 +16,11 @@ function Equipo({ equipo, colorPrimario, colorSecundario }) {
       className='equipo'
       style={estilo}>
       <h3 style={estiloTitulo}>{equipo}</h3>
-      <div className='colaboradores'></div>
+      <div className='colaboradores'>
+        <Colaborador />
+        <Colaborador />
+        <Colaborador />
+      </div>
     </section>
   )
 }

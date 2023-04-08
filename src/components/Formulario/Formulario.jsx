@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import Boton from '../Boton'
 import CampoTexto from '../CampoTexto'
 import ListaOpciones from '../ListaOpciones'
 
 import './Formulario.css'
 
-function Formulario() {
+function Formulario({ equipos }) {
   const [nombre, setNombre] = useState('')
   const [puesto, setPuesto] = useState('')
   const [foto, setFoto] = useState('')
@@ -54,12 +55,17 @@ function Formulario() {
         <ListaOpciones
           value={equipo}
           setValue={setEquipo}
+          equipos={equipos}
         />
 
         <Boton>Crear</Boton>
       </form>
     </section>
   )
+}
+
+Formulario.propTypes = {
+  equipos: PropTypes.array.isRequired,
 }
 
 export default Formulario
