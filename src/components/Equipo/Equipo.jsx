@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import './Equipo.css'
 import Colaborador from '../Colaborador'
 
-function Equipo({ equipo, colorPrimario, colorSecundario }) {
+function Equipo({ equipo, colorPrimario, colorSecundario, colaboradores }) {
   const estilo = {
     backgroundColor: colorSecundario,
   }
@@ -17,9 +17,12 @@ function Equipo({ equipo, colorPrimario, colorSecundario }) {
       style={estilo}>
       <h3 style={estiloTitulo}>{equipo}</h3>
       <div className='colaboradores'>
-        <Colaborador />
-        <Colaborador />
-        <Colaborador />
+        {colaboradores.map((colaborador, index) => (
+          <Colaborador
+            datos={colaborador}
+            key={index}
+          />
+        ))}
       </div>
     </section>
   )
@@ -29,6 +32,7 @@ Equipo.propTypes = {
   equipo: PropTypes.string.isRequired,
   colorPrimario: PropTypes.string.isRequired,
   colorSecundario: PropTypes.string.isRequired,
+  colaboradores: PropTypes.array.isRequired,
 }
 
 export default Equipo

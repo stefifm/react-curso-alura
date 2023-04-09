@@ -7,9 +7,15 @@ import Equipo from './components/Equipo'
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(true)
+  const [colaboradores, setColaboradores] = useState([])
+
+  // Registrar colaborador
+  const registrarColaborador = (colaborador) => {
+    console.log('Nuevo colaborador ', colaborador)
+    setColaboradores([...colaboradores, colaborador])
+  }
 
   // Lista de equipos
-
   const equipos = [
     {
       titulo: 'Programación',
@@ -54,7 +60,13 @@ function App() {
   return (
     <div>
       <Header />
-      {mostrarFormulario && <Formulario equipos={equipos.map((equipo) => equipo.titulo)} />}
+      {mostrarFormulario && (
+        <Formulario
+          registrarColaborador={registrarColaborador}
+          equipos={equipos.map((equipo) => equipo.titulo)}
+        />
+      )}
+
       <MiOrg cambiarMostrarFormulario={cambiarMostrarFormulario} />
 
       {equipos.map((equipo) => (
@@ -63,6 +75,7 @@ function App() {
           key={equipo.titulo}
           colorPrimario={equipo.colorPrimario}
           colorSecundario={equipo.colorSecundario}
+          colaboradores={colaboradores}
         />
       ))}
     </div>

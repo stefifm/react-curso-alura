@@ -6,7 +6,7 @@ import ListaOpciones from '../ListaOpciones'
 
 import './Formulario.css'
 
-function Formulario({ equipos }) {
+function Formulario({ equipos, registrarColaborador }) {
   const [nombre, setNombre] = useState('')
   const [puesto, setPuesto] = useState('')
   const [foto, setFoto] = useState('')
@@ -21,7 +21,7 @@ function Formulario({ equipos }) {
       foto,
       equipo,
     }
-    console.log(colaborador)
+    registrarColaborador(colaborador)
   }
 
   return (
@@ -66,6 +66,7 @@ function Formulario({ equipos }) {
 
 Formulario.propTypes = {
   equipos: PropTypes.array.isRequired,
+  registrarColaborador: PropTypes.func.isRequired,
 }
 
 export default Formulario
