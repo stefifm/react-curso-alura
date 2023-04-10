@@ -11,7 +11,7 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState([
     {
-      equipo: 'Front End',
+      equipo: 'FrontEnd',
       foto: 'https://github.com/harlandlohora.png',
       nombre: 'Harland Lohora',
       puesto: 'Instructor',
