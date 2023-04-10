@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
 import './Colaborador.css'
 
-function Colaborador({ datos }) {
-  const { nombre, puesto, foto, equipo } = datos
+function Colaborador({ datos, colorPrimario }) {
+  const { nombre, puesto, foto } = datos
   return (
     <article className='colaborador'>
-      <div className='encabezado'>
+      <div
+        className='encabezado'
+        style={{ backgroundColor: colorPrimario }}>
         <img
           src={foto}
           alt={nombre}
@@ -21,6 +23,7 @@ function Colaborador({ datos }) {
 
 Colaborador.propTypes = {
   datos: PropTypes.object,
+  colorPrimario: PropTypes.string,
 }
 
 export default Colaborador
