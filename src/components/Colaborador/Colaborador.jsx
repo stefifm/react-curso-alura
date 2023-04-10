@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types'
+import { AiFillCloseCircle } from 'react-icons/ai'
+
 import './Colaborador.css'
 
-function Colaborador({ datos, colorPrimario }) {
+function Colaborador({ datos, colorPrimario, eliminarColaborador }) {
   const { nombre, puesto, foto } = datos
   return (
     <article className='colaborador'>
+      <AiFillCloseCircle
+        className='eliminar'
+        onClick={eliminarColaborador}
+      />
       <div
         className='encabezado'
         style={{ backgroundColor: colorPrimario }}>
@@ -24,6 +30,7 @@ function Colaborador({ datos, colorPrimario }) {
 Colaborador.propTypes = {
   datos: PropTypes.object,
   colorPrimario: PropTypes.string,
+  eliminarColaborador: PropTypes.func,
 }
 
 export default Colaborador

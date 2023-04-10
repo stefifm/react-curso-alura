@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import './Equipo.css'
 import Colaborador from '../Colaborador'
 
-function Equipo({ equipo, colorPrimario, colorSecundario, colaboradores }) {
+function Equipo({ equipo, colorPrimario, colorSecundario, colaboradores, eliminarColaborador }) {
   const estilo = {
     backgroundColor: colorSecundario,
   }
@@ -24,6 +24,7 @@ function Equipo({ equipo, colorPrimario, colorSecundario, colaboradores }) {
                 datos={colaborador}
                 key={index}
                 colorPrimario={colorPrimario}
+                eliminarColaborador={eliminarColaborador}
               />
             ))}
           </div>
@@ -38,6 +39,7 @@ Equipo.propTypes = {
   colorPrimario: PropTypes.string.isRequired,
   colorSecundario: PropTypes.string.isRequired,
   colaboradores: PropTypes.array.isRequired,
+  eliminarColaborador: PropTypes.func.isRequired,
 }
 
 export default Equipo
