@@ -46,21 +46,7 @@ function App() {
     },
   ])
 
-  // Registrar colaborador
-  const registrarColaborador = (colaborador) => {
-    console.log('Nuevo colaborador ', colaborador)
-    setColaboradores([...colaboradores, colaborador])
-    // localStorage.setItem('colaboradores', JSON.stringify([...colaboradores, colaborador]))
-  }
-
-  // const item = JSON.parse(localStorage.getItem('colaboradores'))
-
-  const eliminarColaborador = (colaborador) => {
-    console.log('eliminar colaborador')
-  }
-
-  // Lista de equipos
-  const equipos = [
+  const [equipos, setEquipos] = useState([
     {
       titulo: 'Programación',
       colorPrimario: '#57C278',
@@ -96,7 +82,33 @@ function App() {
       colorPrimario: '#FF8A29',
       colorSecundario: '#FFEEDF',
     },
-  ]
+  ])
+
+  // Registrar colaborador
+  const registrarColaborador = (colaborador) => {
+    console.log('Nuevo colaborador ', colaborador)
+    setColaboradores([...colaboradores, colaborador])
+    // localStorage.setItem('colaboradores', JSON.stringify([...colaboradores, colaborador]))
+  }
+
+  // const item = JSON.parse(localStorage.getItem('colaboradores'))
+
+  const eliminarColaborador = (colaborador) => {
+    console.log('eliminar colaborador')
+  }
+
+  // Actualizar color del equipo
+
+  const actualizarColorEquipo = (color, titulo) => {
+    const nuevoEquipos = equipos.map((equipo) => {
+      if (equipo.titulo === titulo) {
+        equipo.colorPrimario = color
+      }
+      return equipo
+    })
+
+    setEquipos(nuevoEquipos)
+  }
 
   const cambiarMostrarFormulario = () => {
     setMostrarFormulario(!mostrarFormulario)
@@ -124,6 +136,7 @@ function App() {
             (colaborador) => colaborador.equipo === equipo.titulo
           )}
           eliminarColaborador={eliminarColaborador}
+          actualizarColorEquipo={actualizarColorEquipo}
         />
       ))}
 
