@@ -12,19 +12,24 @@ function Equipo({ equipo, colorPrimario, colorSecundario, colaboradores }) {
   }
 
   return (
-    <section
-      className='equipo'
-      style={estilo}>
-      <h3 style={estiloTitulo}>{equipo}</h3>
-      <div className='colaboradores'>
-        {colaboradores.map((colaborador, index) => (
-          <Colaborador
-            datos={colaborador}
-            key={index}
-          />
-        ))}
-      </div>
-    </section>
+    <>
+      {colaboradores.length > 0 && (
+        <section
+          className='equipo'
+          style={estilo}>
+          <h3 style={estiloTitulo}>{equipo}</h3>
+          <div className='colaboradores'>
+            {colaboradores.map((colaborador, index) => (
+              <Colaborador
+                datos={colaborador}
+                key={index}
+                colorPrimario={colorPrimario}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+    </>
   )
 }
 
