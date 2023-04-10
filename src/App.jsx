@@ -8,6 +8,10 @@ import Footer from './components/Footer'
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(true)
+  // const [colaboradores, setColaboradores] = useState([], () => {
+  //   const localData = localStorage.getItem('colaboradores')
+  //   return localData ? JSON.parse(localData) : []
+  // })
 
   const [colaboradores, setColaboradores] = useState([
     {
@@ -46,6 +50,13 @@ function App() {
   const registrarColaborador = (colaborador) => {
     console.log('Nuevo colaborador ', colaborador)
     setColaboradores([...colaboradores, colaborador])
+    // localStorage.setItem('colaboradores', JSON.stringify([...colaboradores, colaborador]))
+  }
+
+  // const item = JSON.parse(localStorage.getItem('colaboradores'))
+
+  const eliminarColaborador = (colaborador) => {
+    console.log('eliminar colaborador')
   }
 
   // Lista de equipos
@@ -90,6 +101,7 @@ function App() {
   const cambiarMostrarFormulario = () => {
     setMostrarFormulario(!mostrarFormulario)
   }
+
   return (
     <div>
       <Header />
@@ -111,6 +123,7 @@ function App() {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.equipo === equipo.titulo
           )}
+          eliminarColaborador={eliminarColaborador}
         />
       ))}
 
