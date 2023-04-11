@@ -10,6 +10,7 @@ function Equipo({
   colaboradores,
   eliminarColaborador,
   actualizarColorEquipo,
+  id,
 }) {
   const estilo = {
     backgroundColor: hexToRgba(colorPrimario, 0.6),
@@ -29,14 +30,14 @@ function Equipo({
             type='color'
             className='input-color'
             value={colorPrimario}
-            onChange={(e) => actualizarColorEquipo(e.target.value, equipo)}
+            onChange={(e) => actualizarColorEquipo(e.target.value, id)}
           />
           <h3 style={estiloTitulo}>{equipo}</h3>
           <div className='colaboradores'>
-            {colaboradores.map((colaborador, index) => (
+            {colaboradores.map((colaborador) => (
               <Colaborador
                 datos={colaborador}
-                key={index}
+                key={colaborador.id}
                 colorPrimario={colorPrimario}
                 eliminarColaborador={eliminarColaborador}
               />
@@ -55,6 +56,7 @@ Equipo.propTypes = {
   colaboradores: PropTypes.array.isRequired,
   eliminarColaborador: PropTypes.func.isRequired,
   actualizarColorEquipo: PropTypes.func,
+  id: PropTypes.string.isRequired,
 }
 
 export default Equipo

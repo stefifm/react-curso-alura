@@ -4,12 +4,12 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import './Colaborador.css'
 
 function Colaborador({ datos, colorPrimario, eliminarColaborador }) {
-  const { nombre, puesto, foto } = datos
+  const { nombre, puesto, foto, id } = datos
   return (
     <article className='colaborador'>
       <AiFillCloseCircle
         className='eliminar'
-        onClick={eliminarColaborador}
+        onClick={() => eliminarColaborador(id)}
       />
       <div
         className='encabezado'
