@@ -6,11 +6,13 @@ import ListaOpciones from '../ListaOpciones'
 
 import './Formulario.css'
 
-function Formulario({ equipos, registrarColaborador }) {
+function Formulario({ equipos, registrarColaborador, crearEquipo }) {
   const [nombre, setNombre] = useState('')
   const [puesto, setPuesto] = useState('')
   const [foto, setFoto] = useState('')
   const [equipo, setEquipo] = useState('')
+  const [titulo, setTitulo] = useState('')
+  const [color, setColor] = useState('')
 
   const manejarEnvio = (e) => {
     e.preventDefault()
@@ -22,6 +24,15 @@ function Formulario({ equipos, registrarColaborador }) {
       equipo,
     }
     registrarColaborador(colaborador)
+  }
+
+  const handleSubmitTeam = (e) => {
+    e.preventDefault()
+    const nuevoEquipo = {
+      titulo,
+      colorPrimario: color,
+    }
+    crearEquipo(nuevoEquipo)
   }
 
   return (
@@ -60,6 +71,27 @@ function Formulario({ equipos, registrarColaborador }) {
 
         <Boton>Crear</Boton>
       </form>
+
+      <form
+        action=''
+        onSubmit={handleSubmitTeam}>
+        <h2>Rellena el formulario para crear el equipo.</h2>
+        <CampoTexto
+          title='Título'
+          placeholder='Ingresar Titulo'
+          required
+          value={titulo}
+          setValue={setTitulo}
+        />
+        <CampoTexto
+          title='Color'
+          placeholder='Ingresar el color en hexadecimal'
+          required
+          value={color}
+          setValue={setColor}
+        />
+        <Boton>Registrar Equipo</Boton>
+      </form>
     </section>
   )
 }
@@ -67,6 +99,7 @@ function Formulario({ equipos, registrarColaborador }) {
 Formulario.propTypes = {
   equipos: PropTypes.array.isRequired,
   registrarColaborador: PropTypes.func.isRequired,
+  crearEquipo: PropTypes.func.isRequired,
 }
 
 export default Formulario
