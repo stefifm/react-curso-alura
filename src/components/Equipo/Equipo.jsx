@@ -6,7 +6,6 @@ import Colaborador from '../Colaborador'
 function Equipo({
   equipo,
   colorPrimario,
-  colorSecundario,
   colaboradores,
   eliminarColaborador,
   actualizarColorEquipo,
@@ -54,7 +53,6 @@ function Equipo({
 Equipo.propTypes = {
   equipo: PropTypes.string.isRequired,
   colorPrimario: PropTypes.string.isRequired,
-  colorSecundario: PropTypes.string.isRequired,
   colaboradores: PropTypes.array.isRequired,
   eliminarColaborador: PropTypes.func.isRequired,
   actualizarColorEquipo: PropTypes.func,
