@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import './CampoTexto.css'
+import './Campo.css'
 import PropTypes from 'prop-types'
 
-function CampoTexto({ title, placeholder, required, value, setValue }) {
+function Campo({ title, placeholder, required, value, setValue, type = 'text' }) {
   const placeholderUpdated = `${placeholder}...`
 
   const handleChange = (e) => {
@@ -10,14 +9,14 @@ function CampoTexto({ title, placeholder, required, value, setValue }) {
   }
 
   return (
-    <div className='campo-texto'>
+    <div className={`campo campo-${type}`}>
       <label
         className='label'
         htmlFor=''>
         {title}
       </label>
       <input
-        type='text'
+        type={type}
         placeholder={placeholderUpdated}
         required={required}
         value={value}
@@ -27,12 +26,13 @@ function CampoTexto({ title, placeholder, required, value, setValue }) {
   )
 }
 
-CampoTexto.propTypes = {
+Campo.propTypes = {
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
   value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
+  type: PropTypes.string,
 }
 
-export default CampoTexto
+export default Campo
