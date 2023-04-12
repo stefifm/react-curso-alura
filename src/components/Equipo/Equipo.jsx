@@ -11,6 +11,7 @@ function Equipo({
   eliminarColaborador,
   actualizarColorEquipo,
   id,
+  like,
 }) {
   const estilo = {
     backgroundColor: hexToRgba(colorPrimario, 0.6),
@@ -40,6 +41,7 @@ function Equipo({
                 key={colaborador.id}
                 colorPrimario={colorPrimario}
                 eliminarColaborador={eliminarColaborador}
+                like={like}
               />
             ))}
           </div>
@@ -57,6 +59,7 @@ Equipo.propTypes = {
   eliminarColaborador: PropTypes.func.isRequired,
   actualizarColorEquipo: PropTypes.func,
   id: PropTypes.string.isRequired,
+  like: PropTypes.func.isRequired,
 }
 
 export default Equipo

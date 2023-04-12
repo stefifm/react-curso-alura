@@ -9,10 +9,6 @@ import Footer from './components/Footer'
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(true)
-  // const [colaboradores, setColaboradores] = useState([], () => {
-  //   const localData = localStorage.getItem('colaboradores')
-  //   return localData ? JSON.parse(localData) : []
-  // })
 
   const [colaboradores, setColaboradores] = useState([
     {
@@ -21,6 +17,7 @@ function App() {
       foto: 'https://github.com/harlandlohora.png',
       nombre: 'Harland Lohora',
       puesto: 'Instructor',
+      fav: false,
     },
     {
       id: uuidv4(),
@@ -28,6 +25,7 @@ function App() {
       foto: 'https://github.com/genesysaluralatam.png',
       nombre: 'Genesys Rondón',
       puesto: 'Desarrolladora de software e instructora',
+      fav: true,
     },
     {
       id: uuidv4(),
@@ -35,6 +33,7 @@ function App() {
       foto: 'https://github.com/JeanmarieAluraLatam.png',
       nombre: 'Jeanmarie Quijada',
       puesto: 'Instructora en Alura Latam',
+      fav: false,
     },
     {
       id: uuidv4(),
@@ -42,6 +41,7 @@ function App() {
       foto: 'https://github.com/christianpva.png',
       nombre: 'Christian Velasco',
       puesto: 'Head de Alura e Instructor',
+      fav: false,
     },
     {
       id: uuidv4(),
@@ -49,6 +49,7 @@ function App() {
       foto: 'https://github.com/JoseDarioGonzalezCha.png',
       nombre: 'Jose Gonzalez',
       puesto: 'Dev FullStack',
+      fav: false,
     },
   ])
 
@@ -101,10 +102,7 @@ function App() {
   const registrarColaborador = (colaborador) => {
     console.log('Nuevo colaborador ', colaborador)
     setColaboradores([...colaboradores, colaborador])
-    // localStorage.setItem('colaboradores', JSON.stringify([...colaboradores, colaborador]))
   }
-
-  // const item = JSON.parse(localStorage.getItem('colaboradores'))
 
   const eliminarColaborador = (id) => {
     const nuevoColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
@@ -135,6 +133,19 @@ function App() {
     setMostrarFormulario(!mostrarFormulario)
   }
 
+  // Like
+
+  const like = (id) => {
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador
+    })
+
+    setColaboradores(colaboradoresActualizados)
+  }
+
   return (
     <div>
       <Header />
@@ -160,6 +171,7 @@ function App() {
           )}
           eliminarColaborador={eliminarColaborador}
           actualizarColorEquipo={actualizarColorEquipo}
+          like={like}
         />
       ))}
 
